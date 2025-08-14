@@ -23,6 +23,10 @@ async function run() {
     // await client.connect();
     console.log("Connected to MongoDB");
 
+    const expenseCollection = client
+      .db("Personal Expense Tracker")
+      .collection("expenses");
+
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!"
     );
