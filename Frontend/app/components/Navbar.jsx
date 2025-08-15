@@ -1,7 +1,10 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../(Provider)/AuthProvider.jsx/Page";
 
 function Navbar() {
+  const { logOut, user } = useContext(AuthContext);
   return (
     <div className="navbar bg-gradient-to-r from-indigo-500  to-indigo-400 opacity-80 text-black shadow-sm">
       <div className="navbar-start">
@@ -29,12 +32,16 @@ function Navbar() {
           >
             <Link href={"/"}>Home</Link>
             <Link href={"/#"}>All Expenses</Link>
-            <Link href={"/#"}>Add Expenses</Link>
-            <Link href={"/#"}>My Expenses</Link>
+            {user && (
+              <>
+                <Link href={"/#"}>Add Expenses</Link>
+                <Link href={"/#"}>My Expenses</Link>
+              </>
+            )}
             <Link href={"/#"}>About Us</Link>
           </ul>
         </div>
-        {/* <a className="btn btn-ghost text-xl">daisyUI</a> */}
+
         <div className="flex items-center gap-2">
           <div>
             <Link
@@ -51,8 +58,12 @@ function Navbar() {
         <ul className="menu menu-horizontal px-1 gap-3">
           <Link href={"/"}>Home</Link>
           <Link href={"/#"}>All Expenses</Link>
-          <Link href={"/#"}>Add Expenses</Link>
-          <Link href={"/#"}>My Expenses</Link>
+          {user && (
+            <>
+              <Link href={"/#"}>Add Expenses</Link>
+              <Link href={"/#"}>My Expenses</Link>
+            </>
+          )}
           <Link href={"/#"}>About Us</Link>
         </ul>
       </div>
@@ -66,64 +77,38 @@ function Navbar() {
           >
             {theme === "light" ? "🌙" : "🌞"}
           </button> */}
-        {/* 
-          {user && user?.email ? (
-            <div className="flex justify-center items-center gap-3">
-              <img
-                data-tooltip-id="my-tooltip"
-                data-tooltip-content={user?.displayName}
-                className="w-11 rounded-full"
-                src={user?.photoURL}
-                alt="Profile-photo"
-              />
-              <Tooltip id="my-tooltip" place="top" />
 
-              <button onClick={logOut} className="btn bg-lime-400">
-                Logout
-              </button>
-            </div>
-          ) : (
-            <div className="flex justify-center items-center gap-3">
-              <NavLink to="/login" className="btn bg-lime-400">
-                Login
-              </NavLink>
-              <NavLink to="/register" className="btn bg-lime-400">
-                Signup
-              </NavLink>
-            </div>
-          )} */}
+        {user && user?.email ? (
+          <div className="flex justify-center items-center gap-3">
+            <img
+              className="w-11 rounded-full"
+              src={user?.photoURL}
+              alt="Profile-photo"
+            />
 
-        <div className="flex justify-center items-center gap-3">
-          {/* <img
-            // data-tooltip-id="my-tooltip"
-            // data-tooltip-content={user?.displayName}
-            className="w-11 rounded-full"
-            // src={user?.photoURL}
-            src=""
-            alt="Profile-photo"
-          /> */}
-          {/* <Tooltip id="my-tooltip" place="top" /> */}
-          {/* onClick={logOut} */}
-          <button className="btn bg-red-500 text-white rounded-3xl">
-            Logout
-          </button>
-        </div>
-
-        {/*  */}
-        <div className="flex justify-center items-center gap-3">
-          <Link
-            href="/login"
-            className="btn bg-blue-600 text-white rounded-3xl"
-          >
-            Login
-          </Link>
-          <Link
-            href="/register"
-            className="btn bg-blue-600 text-white rounded-3xl"
-          >
-            Signup
-          </Link>
-        </div>
+            <button
+              onClick={logOut}
+              className="btn bg-red-500 text-white rounded-3xl"
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <div className="flex justify-center items-center gap-3">
+            <Link
+              href="/login"
+              className="btn bg-blue-600 text-white rounded-3xl"
+            >
+              Login
+            </Link>
+            <Link
+              href="/register"
+              className="btn bg-blue-600 text-white rounded-3xl"
+            >
+              Signup
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
