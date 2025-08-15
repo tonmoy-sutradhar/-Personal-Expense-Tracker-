@@ -1,3 +1,5 @@
+"use client";
+
 import app from "@/app/firebase/firebase.init";
 import React, { createContext, useEffect, useState } from "react";
 import {
@@ -5,7 +7,9 @@ import {
   getAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
@@ -52,14 +56,34 @@ function AuthProvider({ children }) {
   };
 
   // Update user info
-  const UpdateUserProfile = (updateData) => {
+  const updateUserProfile = (updateData) => {
     setLoading(true);
     return updateProfile(auth.currentUser, updateData);
   };
 
-  //
+  //Login with google
+  const GoogleLogin = (email, password) => {
+    setLoading(true);
+    return signInWithPopup(auth, provider);
+  };
 
-  const AuthInfo = {};
+  // Forgot password
+  const forgotPassword = (email) => {
+    setLoading(true);
+    return sendPasswordResetEmail(auth, email);
+  };
+
+  const AuthInfo = {
+    user,
+    setUser,
+    createNewUser,
+    logOut,
+    userLogin,
+    loading,
+    updateUserProfile,
+    GoogleLogin,
+    forgotPassword,
+  };
   return (
     <AuthContext.Provider value={AuthInfo}>{children}</AuthContext.Provider>
   );

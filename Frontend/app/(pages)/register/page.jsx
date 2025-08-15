@@ -1,76 +1,84 @@
-// import { useRouter } from "next/navigation";
-// import React, { useState } from "react";
+"use client";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { AuthContext } from "@/app/(Provider)/AuthProvider.jsx/Page";
 import img from "@/app/asset/register.jpg";
 import Link from "next/link";
+import { useContext } from "react";
+import { toast } from "react-toastify";
+import google from "@/app/asset/google.png";
+import { IoEye } from "react-icons/io5";
+import { IoMdEyeOff } from "react-icons/io";
+
 function page() {
-  // const { createNewUser, setUser, updateUserProfile, GoogleLogin } =
-  //   useContext(AuthContext);
+  const { createNewUser, setUser, updateUserProfile, GoogleLogin } =
+    useContext(AuthContext);
 
-  // const [err, setErr] = useState("");
-  // const [success, setSuccess] = useState(false);
-  // const [showPassword, setShowPassword] = useState(false);
-  // const navigate = useRouter();
+  const [err, setErr] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useRouter();
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const form = new FormData(e.target);
-  //   const name = form.get("name");
-  //   const email = form.get("email");
-  //   const password = form.get("password");
-  //   const photo = form.get("photo");
-  //   const terms = form.get("terms");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const name = form.get("name");
+    const email = form.get("email");
+    const password = form.get("password");
+    const photo = form.get("photo");
+    const terms = form.get("terms");
 
-  //   setErr("");
-  //   setSuccess(false);
+    setErr("");
+    setSuccess(false);
 
-  //   if (password.length <= 6) {
-  //     setErr("Password must be more than 6 characters.");
-  //     toast.warning("Password must be more than 6 characters.");
-  //     return;
-  //   }
+    if (password.length <= 6) {
+      setErr("Password must be more than 6 characters.");
+      toast.warning("Password must be more than 6 characters.");
+      return;
+    }
 
-  //   if (!terms) {
-  //     setErr("Please Accept Terms & Condition");
-  //     toast.warning("Please Accept Terms & Condition");
-  //     return;
-  //   }
+    if (!terms) {
+      setErr("Please Accept Terms & Condition");
+      toast.warning("Please Accept Terms & Condition");
+      return;
+    }
 
-  //   const regex =
-  //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
-  //   if (!regex.test(password)) {
-  //     setErr(
-  //       "Password must contain more than six characters, one number, one uppercase letter, and one special character."
-  //     );
-  //     toast.warning(
-  //       "Password must contain more than six characters, one number, one uppercase letter, and one special character."
-  //     );
-  //     return;
-  //   }
+    const regex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
+    if (!regex.test(password)) {
+      setErr(
+        "Password must contain more than six characters, one number, one uppercase letter, and one special character."
+      );
+      toast.warning(
+        "Password must contain more than six characters, one number, one uppercase letter, and one special character."
+      );
+      return;
+    }
 
-  // Create new user
-  //   createNewUser(email, password)
-  //     .then((result) => {
-  //       const user = result.user;
-  //       setUser(user);
-  //       setSuccess(true);
-  //       toast.success("Sign up successfully.");
-  //       // console.log(user);
+    // Create new user
+    createNewUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        setSuccess(true);
+        toast.success("Sign up successfully.");
+        // console.log(user);
 
-  //       updateUserProfile({ displayName: name, photoURL: photo })
-  //         .then(() => {
-  //           navigate("/");
-  //           // console.log("Profile Update.");
-  //         })
-  //         .catch((error) => {
-  //           // console.log("ERROR IN PROFILE --", error);
-  //         });
-  //     })
-  //     .catch((error) => {
-  //       // console.log("ERROR IN REGISTER --", error.message);
-  //       toast.warning(`Error: ${error.message}`);
-  //       setSuccess(false);
-  //     });
-  // };
+        updateUserProfile({ displayName: name, photoURL: photo })
+          .then(() => {
+            navigate.push("/");
+            // console.log("Profile Update.");
+          })
+          .catch((error) => {
+            // console.log("ERROR IN PROFILE --", error);
+          });
+      })
+      .catch((error) => {
+        // console.log("ERROR IN REGISTER --", error.message);
+        toast.warning(`Error: ${error.message}`);
+        setSuccess(false);
+      });
+  };
 
   return (
     <div className="flex justify-center items-center  ">
@@ -84,8 +92,7 @@ function page() {
       ></div>
 
       <div className="card bg-gradient-to-r from-blue-500 to-purple-600 w-full max-w-sm shrink-0 shadow-2xl rounded-xl p-3">
-        {/* onSubmit={handleSubmit} */}
-        <form className="card-body  ">
+        <form onSubmit={handleSubmit} className="card-body text-black">
           <h1 className="text-xl font-semibold text-center">
             Register your account
           </h1>
@@ -96,7 +103,7 @@ function page() {
             </label>
             <input
               type="text"
-              // name="name"
+              name="name"
               placeholder="Enter your name"
               className="input rounded-none bg-[white]"
               required
@@ -108,7 +115,7 @@ function page() {
             </label>
             <input
               type="text"
-              // name="photo"
+              name="photo"
               placeholder="Enter your photo URL"
               className="input rounded-none bg-[#F3F3F3]"
               required
@@ -131,18 +138,18 @@ function page() {
               <span className="label-text font-bold">Password</span>
             </label>
             <input
-              // type={showPassword ? "text" : "password"}
-              // name="password"
+              type={showPassword ? "text" : "password"}
+              name="password"
               placeholder="Enter your password"
               className="input rounded-none bg-[white]"
               required
             />
             <button
               type="button"
-              // onClick={() => setShowPassword(!showPassword)}
-              className="text-2xl absolute right-4 top-12"
+              onClick={() => setShowPassword(!showPassword)}
+              className="text-2xl absolute right-4 top-7"
             >
-              {/* {showPassword ? <IoMdEyeOff /> : <IoEyeSharp />} */}❤
+              {showPassword ? <IoMdEyeOff /> : <IoEye />}
             </button>
           </div>
           <div className="form-control ">
@@ -174,14 +181,14 @@ function page() {
           </div>
 
           <div className="flex justify-center gap-1 mt-1 items-center w-full border-2 border-blue-500 bg-lime-300 rounded-xl py-1">
-            {/* <img className="w-5 h-5 rounded-full" src="" alt="img" /> */}
-            {/* <button
+            <img className="w-5 h-5 rounded-full" src={google.src} alt="" />
+            <button
               type="button"
               onClick={() => {
                 GoogleLogin()
                   .then(() => {
                     toast.success("Google login successful");
-                    navigate("/");
+                    navigate.push("/");
                   })
                   .catch((error) => {
                     toast.warning("Google login unsuccessful");
@@ -190,7 +197,7 @@ function page() {
               className="text-sm py-1"
             >
               Login with Google
-            </button> */}
+            </button>
           </div>
         </form>
 
