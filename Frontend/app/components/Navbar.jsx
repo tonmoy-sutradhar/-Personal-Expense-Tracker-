@@ -31,7 +31,7 @@ function Navbar() {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow gap-3"
           >
             <Link href={"/"}>Home</Link>
-            <Link href={"/#"}>All Expenses</Link>
+            <Link href={"/AllExpenses"}>All Expenses</Link>
             {user && (
               <>
                 <Link href={"/AddExpenses"}>Add Expenses</Link>
@@ -57,7 +57,7 @@ function Navbar() {
       <div className="active navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-3">
           <Link href={"/"}>Home</Link>
-          <Link href={"/#"}>All Expenses</Link>
+          <Link href={"/AllExpenses"}>All Expenses</Link>
           {user && (
             <>
               <Link href={"/AddExpenses"}>Add Expenses</Link>
