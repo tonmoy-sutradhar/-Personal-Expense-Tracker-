@@ -3,6 +3,14 @@
 
 @plugin "daisyui";
 
+html {
+  overflow: scroll;
+}
+a.active {
+  color: rgb(7, 33, 182);
+  text-decoration: underline;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
