@@ -25,7 +25,7 @@ function AddExpenses() {
 
     try {
       const { data } = await axios.post(
-        "https://sports-equipment-store-server-zeta.vercel.app/equipment",
+        "http://localhost:7000/expenses",
         allData,
         {
           headers: {
@@ -82,8 +82,8 @@ function AddExpenses() {
               required
             >
               <option value="">Select category</option>
-              <option value="Ball">Ball</option>
-              <option value="Racket">Racket</option>
+              <option value="Ball">Cricket</option>
+              <option value="Racket">Football</option>
               <option value="Shoes">Shoes</option>
               <option value="Accessories">Accessories</option>
             </select>
