@@ -25,14 +25,24 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     // await client.connect();
-
     console.log("MongoDB Connected");
 
     const expenseCollection = client
       .db("Personal-Expense-Tracker")
       .collection("expenses");
 
-    // Post Add Expenses data
+    // 2. Get all data from Database
+    app.get("/expenses", async (req, res) => {
+      try {
+        const result = await expenseCollection.find().toArray();
+        res.send(result);
+      } catch (err) {
+        console.log(err);
+        res.status(500).send({ message: "Failed to fetch expenses" });
+      }
+    });
+
+    // 1. Post Add Expenses data
     app.post("/expenses", async (req, res) => {
       try {
         const newExpenses = req.body;
@@ -63,42 +73,3 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on PORT: ${port}`);
 });
-// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.r8z7rex.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
-
-// const client = new MongoClient(uri, {
-//   serverApi: {
-//     version: ServerApiVersion.v1,
-//     strict: true,
-//     deprecationErrors: true,
-//   },
-// });
-
-// async function run() {
-//   try {
-//     // await client.connect();
-//     console.log("Connected to MongoDB");
-
-//     const expenseCollection = client
-//       .db("Personal-Expense-Tracker")
-//       .collection("expenses");
-
-//     // Post Add Expenses data
-//     app.post("/expenses", async (req, res) => {
-//       try {
-//         const newExpenses = req.body;
-//         const result = await expenseCollection.insertOne(newExpenses);
-//         res.send(result);
-//       } catch (err) {
-//         console.log("Error adding expenses", err);
-//         res.status(500).send({ message: "Failed to add Expenses" });
-//       }
-//     });
-
-//     console.log(
-//       "Pinged your deployment. You successfully connected to MongoDB!"
-//     );
-//   } catch (error) {
-//     console.log("Error connecting to MONGODB", error);
-//   }
-// }
-// run().catch(console.dir);
