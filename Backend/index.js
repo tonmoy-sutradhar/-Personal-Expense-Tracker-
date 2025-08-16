@@ -57,6 +57,19 @@ async function run() {
       }
     });
 
+    // Get data by specific ID
+    app.get("/expenses/:id", async (req, res) => {
+      try {
+        const id = req.params.id;
+        const query = { _id: new ObjectId(id) };
+        const result = await expenseCollection.findOne(query);
+        res.send(result);
+      } catch (err) {
+        console.log(err);
+        res.status(500).send({ message: "Failed to fetch expenses by ID" });
+      }
+    });
+
     // Update expenses data
     app.put("/expenses/:id", async (req, res) => {
       try {
