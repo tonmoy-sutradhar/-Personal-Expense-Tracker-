@@ -42,6 +42,20 @@ async function run() {
     });
 
     // Get My expenses
+    app.get("my-expenses", async (req, res) => {
+      try {
+        const email = req.body.email;
+        if (!email) {
+          return res.status(400).send({ message: "User email is required" });
+        }
+        const query = { userEmail: email };
+        const result = await expenseCollection.find(query).toArray();
+        res.send(result);
+      } catch (err) {
+        console.log(err);
+        res.status(500).send({ message: "Failed to fetch user's expenses" });
+      }
+    });
 
     // 1. Post Add Expenses data
     app.post("/expenses", async (req, res) => {
