@@ -42,9 +42,9 @@ async function run() {
     });
 
     // Get My expenses
-    app.get("my-expenses", async (req, res) => {
+    app.get("/my-expenses", async (req, res) => {
       try {
-        const email = req.body.email;
+        const email = req.query.email;
         if (!email) {
           return res.status(400).send({ message: "User email is required" });
         }

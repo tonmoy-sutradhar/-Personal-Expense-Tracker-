@@ -35,7 +35,7 @@ function Navbar() {
             {user && (
               <>
                 <Link href={"/AddExpenses"}>Add Expenses</Link>
-                <Link href={"/#"}>My Expenses</Link>
+                <Link href={"/MyExpenses"}>My Expenses</Link>
               </>
             )}
             <Link href={"/#"}>About Us</Link>
@@ -61,7 +61,7 @@ function Navbar() {
           {user && (
             <>
               <Link href={"/AddExpenses"}>Add Expenses</Link>
-              <Link href={"/#"}>My Expenses</Link>
+              <Link href={"/MyExpenses"}>My Expenses</Link>
             </>
           )}
           <Link href={"/#"}>About Us</Link>

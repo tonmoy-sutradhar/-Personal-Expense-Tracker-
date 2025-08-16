@@ -1,3 +1,4 @@
+"use client";
 import { AuthContext } from "@/app/(Provider)/AuthProvider.jsx/Page";
 import MyExpensesCart from "@/app/components/MyExpensesCart";
 import axios from "axios";
@@ -31,11 +32,11 @@ function MyExpenses() {
       <h2 className="text-3xl font-bold text-center border-b-2 w-[400px] mx-auto text-blue-500">
         My Expenses List
       </h2>
-      <p className="ml-4">
+      <p className="ml-4 text-black">
         User Name:{" "}
         <span className="text-blue-500">{user?.displayName || "Guest"}</span>
       </p>
-      <p className="ml-4 mb-5">
+      <p className="ml-4 mb-5 text-black">
         User Email:{" "}
         <span className="text-blue-500">{user?.email || "No email"}</span>
       </p>
