@@ -68,16 +68,6 @@ function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        {/* <button
-            title="Change theme"
-            onClick={toggleTheme}
-            className={` text-3xl mr-3 bg-[#e26fc1] font-bold transition duration-300 rounded-md shadow ${
-              theme === "light" ? "text-black " : "text-black bg-gray-950 "
-            }`}
-          >
-            {theme === "light" ? "🌙" : "🌞"}
-          </button> */}
-
         {user && user?.email ? (
           <div className="flex justify-center items-center gap-3">
             <img

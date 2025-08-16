@@ -5,12 +5,8 @@ function Banner() {
   return (
     <div
       className="hero min-h-screen"
-      // style={{
-      //   backgroundImage:
-      //     "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
-      // }}
       style={{
-        backgroundImage: `url(${banner.src})`, // Use local image
+        backgroundImage: `url(${banner.src})`,
       }}
     >
       <div className="hero-overlay"></div>

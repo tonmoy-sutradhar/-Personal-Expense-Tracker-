@@ -18,7 +18,7 @@ function MyExpenses() {
           setMyExpenses(res.data);
         })
         .catch((err) => {
-          console.log("Error fetching user expenses", err);
+          // console.log("Error fetching user expenses", err);
         });
     }
   }, [user?.email]);
@@ -46,7 +46,7 @@ function MyExpenses() {
           No expenses added.
         </p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 px-9">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 px-9 py-7">
           {myExpenses.map((item, index) => (
             <div key={item._id}>
               <MyExpensesCart

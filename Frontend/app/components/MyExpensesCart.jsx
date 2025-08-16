@@ -1,4 +1,3 @@
-// import Link from "next/link";
 "use client";
 import axios from "axios";
 import Link from "next/link";
@@ -29,7 +28,7 @@ function MyExpensesCart({ item, handleDelete1 }) {
                 text: "Your file has been deleted.",
                 icon: "success",
               });
-              handleDelete1(id); // update local state
+              handleDelete1(id); 
             }
           })
           .catch((err) => {

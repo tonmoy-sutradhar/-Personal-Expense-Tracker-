@@ -28,7 +28,9 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between py-8">
         {/* Logo / Site Name */}
         <div className="text-xl font-bold mb-4 md:mb-0">
-          Personal Expenses Tracker
+          Personal Expenses Tracker <br />
+          Developer:{" "}
+          <span className="text-xl font-bold text-black">Tonmoy Sutradhar</span>
         </div>
 
         {/* Social Icons */}

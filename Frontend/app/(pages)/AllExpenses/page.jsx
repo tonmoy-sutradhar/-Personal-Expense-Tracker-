@@ -84,7 +84,7 @@ function AllExpenses() {
         setExpenses(response.data);
         // console.log(response.data);
       } catch (err) {
-        console.log(err, "all data fetch issue");
+        // console.log(err, "all data fetch issue");
       }
     };
     fetchData();
