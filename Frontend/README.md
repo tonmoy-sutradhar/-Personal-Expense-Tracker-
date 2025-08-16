@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<img src="https://www.moneypatrol.com/moneytalk/wp-content/uploads/2023/06/budget185.png" alt="Logo" width="80" height="80" />
 
-## Getting Started
+# Personal Expenses Tracker
 
-First, run the development server:
+## Live Link
 
-```bash
+- [Personal Expenses Tracker ](https://personal-expense-tracker-neon.vercel.app)
+
+## Website Details
+
+- Personal Expenses Tracker
+
+The Personal Expense Tracker is a full-stack application that lets users add, view, edit, and delete expenses with category tagging. It uses Node.js, Express, and MongoDB for the backend REST API and Next.js with Tailwind CSS for a responsive, user-friendly frontend. The system ensures data validation, smooth CRUD operations, and a clean UI for managing personal finances.
+
+## Authors
+
+- [@Tonmoy Sutradhar](https://github.com/tonmoy-sutradhar)
+
+## Demo
+
+<p align="center">
+  <strong>Home Page</strong>  
+  <br>
+  <img src="https://i.ibb.co.com/bZHW7bL/Screenshot-1433.png" alt="Home Page" width="80%" />
+</p>
+
+# How to Setup
+
+### 1️⃣ Clone the repository
+
+- https://github.com/tonmoy-sutradhar/-Personal-Expense-Tracker-
+
+# Backend Setup (Express.js)
+
+cd backend
+
+### Install dependencies
+
+npm install
+
+### Create environment file
+
+cp .env.example .env
+
+### Start backend server
+
+npm start # for production
+
+# Frontend Setup (Next.js)
+
+cd ../frontend
+
+### Install dependencies
+
+npm install
+
+### Create environment file
+
+cp .env.example .env.local
+
+### Start frontend server
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+#### User Authentication:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Login and registration with email/password and an additional method (Example->, Google).
+- Dynamic navbar showing user details and logout option upon login.
 
-## Learn More
+#### Expenses:
 
-To learn more about Next.js, take a look at the following resources:
+- Add, update, and delete expenses.
+- Logged-in users can view and manage their added equipment on a private "My Expenses List" page.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### Responsive Design:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Fully responsive interface for seamless navigation across mobile, tablet, and desktop devices.
 
-## Deploy on Vercel
+#### Error Handling and Feedback:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Custom error and success notifications using toast/sweet alerts instead of default alerts.
+- A meaningful 404 page for non-existing routes.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### Hosting and Deployment:
+
+- Client-side and server-side hosting with Vercel.
+- Error-free navigation across all routes, even on page reload.
+
+# Technology Used
+
+#### Frontend Technologies:
+
+- Next.js: For building the single-page application (SPA) with a responsive user interface.
+- Tailwind CSS / Bootstrap: For styling and ensuring responsive design.
+- Lottie React: For integrating animations.
+- React Tooltip: For tooltips and interactivity.
+
+#### Backend Technologies:
+
+- Node.js: For creating the server-side application.
+- Express.js: For building RESTful APIs and handling server-side routing.
+
+#### Database:
+
+- MongoDB: For storing Expenses data and user-related information.
+
+#### Authentication:
+
+- Firebase Authentication: For secure user authentication and authorization.
+
+#### Version Control:
+
+- Git & GitHub: For tracking project changes with meaningful commits and collaboration.
+
+# Feedback
+
+If you have any feedback, please reach out to me on [LinkedIn](https://www.linkedin.com/in/tonmoy-sutradhar-013071280/).
