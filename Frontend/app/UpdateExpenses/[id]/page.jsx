@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 function UpdateExpenses() {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
-  const router = useRouter();
+  const navigate = useRouter();
 
   const [expenseData, setExpenseData] = useState({
     title: "",
@@ -39,7 +39,7 @@ function UpdateExpenses() {
 
       if (res.data.modifiedCount > 0 || res.data.success) {
         Swal.fire("Success!", "Expense updated successfully", "success");
-        router.push("/");
+        navigate.push("/MyExpenses");
       }
     } catch (err) {
       console.error("Error updating expense:", err);
@@ -52,9 +52,9 @@ function UpdateExpenses() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 text-black">
+    <div className="py-9 flex items-center justify-center bg-gray-100 px-4 text-black">
       <div className="max-w-xl w-full bg-white shadow-lg rounded-lg p-6">
-        <h1 className="text-2xl font-bold text-center mb-6 text-purple-700">
+        <h1 className="text-3xl font-bold text-center border-b-2 w-[400px] mx-auto text-blue-500 mb-2">
           Update Expense
         </h1>
 
@@ -113,7 +113,7 @@ function UpdateExpenses() {
           {/* Submit */}
           <button
             type="submit"
-            className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg w-full"
+            className="bg-purple-600 cursor-pointer hover:bg-purple-700 text-white px-6 py-2 rounded-lg w-full"
           >
             Update Expense
           </button>

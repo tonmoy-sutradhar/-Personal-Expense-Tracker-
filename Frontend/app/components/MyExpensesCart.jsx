@@ -28,7 +28,7 @@ function MyExpensesCart({ item, handleDelete1 }) {
                 text: "Your file has been deleted.",
                 icon: "success",
               });
-              handleDelete1(id); 
+              handleDelete1(id);
             }
           })
           .catch((err) => {
@@ -40,7 +40,7 @@ function MyExpensesCart({ item, handleDelete1 }) {
   };
 
   return (
-    <div className="max-w-[350px] space-y-4 rounded-lg  p-6 shadow-lg md:w-[350px] bg-purple-700">
+    <div className="max-w-[350px] space-y-4 rounded-lg  p-6 shadow-lg md:w-[350px] bg-purple-900">
       <div className="grid gap-2">
         <h1 className="text-lg font-semibold text-white">Title: {title}</h1>
         <div className="text-lg font-semibold text-white">
