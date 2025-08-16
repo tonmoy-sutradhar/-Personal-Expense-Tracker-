@@ -1,10 +1,44 @@
 // import Link from "next/link";
 "use client";
+import axios from "axios";
 import React from "react";
+import Swal from "sweetalert2";
 
 function MyExpensesCart({ item, handleDelete1 }) {
   const { _id, title, amount, date, category } = item;
-  console.log(item);
+
+  // HandleDelete
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:7000/expenses/${id}`)
+          .then((res) => {
+            if (res.data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+              handleDelete1(id); // update local state
+            }
+          })
+          .catch((err) => {
+            console.error("Error deleting equipment:", err);
+            Swal.fire("Error!", "Something went wrong!", "error");
+          });
+      }
+    });
+  };
+
   return (
     <div className="max-w-[350px] space-y-4 rounded-lg  p-6 shadow-lg md:w-[350px] bg-purple-700">
       <div className="grid gap-2">
@@ -23,16 +57,15 @@ function MyExpensesCart({ item, handleDelete1 }) {
       <div className="flex gap-4">
         {/* ----- */}
         {/* <Link href={`/updateEquipment/${_id}`}> */}
-        <button className="rounded-4xl bg-green-500 px-4 py-1 text-[12px] font-semibold text-white  sm:text-sm md:text-base ">
+        <button className="rounded-4xl bg-green-500 px-4 py-1 text-[12px] font-semibold text-white  sm:text-sm md:text-base cursor-pointer ">
           Update
         </button>
         {/* </Link> */}
 
         <button
           title="Delete"
-          // onClick={() => handleDelete(_id)}
-          className="bg-red-500 px-4 py-1 rounded-4xl text-white"
-          // className="rounded-md border border-black px-4 dark:border-white dark:hover:text-slate-800 dark:hover:bg-white  py-2  duration-300 hover:bg-gray-200"
+          onClick={() => handleDelete(_id)}
+          className="bg-red-500 px-4 py-1 rounded-4xl text-white cursor-pointer"
         >
           Delete
         </button>

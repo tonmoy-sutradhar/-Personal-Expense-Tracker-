@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const port = process.env.PORT || 7000;
 
 // middleware
@@ -54,6 +54,19 @@ async function run() {
       } catch (err) {
         console.log(err);
         res.status(500).send({ message: "Failed to fetch user's expenses" });
+      }
+    });
+
+    // Delete expenses from database by specific id
+    app.delete("/expenses/:id", async (req, res) => {
+      try {
+        const id = req.params.id;
+        const query = { _id: new ObjectId(id) };
+        const result = await expenseCollection.deleteOne(query);
+        res.send(result);
+      } catch (err) {
+        console.log(err);
+        res.status(500).send({ message: "Failed to delete expenses" });
       }
     });
 
