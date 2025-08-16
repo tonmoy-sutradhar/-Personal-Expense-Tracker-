@@ -57,6 +57,33 @@ async function run() {
       }
     });
 
+    // Update expenses data
+    app.put("/expenses/:id", async (req, res) => {
+      try {
+        const id = req.params.id;
+        const filter = { _id: new ObjectId(id) };
+        const options = { upsert: true };
+        const update = req.body;
+        const expensesUpdate = {
+          $set: {
+            title: update.title,
+            amount: update.amount,
+            category: update.category,
+            date: update.date,
+          },
+        };
+        const result = await expenseCollection.updateOne(
+          filter,
+          expensesUpdate,
+          options
+        );
+        res.send(result);
+      } catch (err) {
+        console.log(err);
+        res.status(500).send({ message: "Failed to update expenses" });
+      }
+    });
+
     // Delete expenses from database by specific id
     app.delete("/expenses/:id", async (req, res) => {
       try {

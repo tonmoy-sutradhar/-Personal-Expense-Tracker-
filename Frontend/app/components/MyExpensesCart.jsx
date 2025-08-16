@@ -1,6 +1,7 @@
 // import Link from "next/link";
 "use client";
 import axios from "axios";
+import Link from "next/link";
 import React from "react";
 import Swal from "sweetalert2";
 
@@ -55,12 +56,11 @@ function MyExpensesCart({ item, handleDelete1 }) {
       </div>
 
       <div className="flex gap-4">
-        {/* ----- */}
-        {/* <Link href={`/updateEquipment/${_id}`}> */}
-        <button className="rounded-4xl bg-green-500 px-4 py-1 text-[12px] font-semibold text-white  sm:text-sm md:text-base cursor-pointer ">
-          Update
-        </button>
-        {/* </Link> */}
+        <Link href={`/UpdateExpenses/${_id}`}>
+          <button className="rounded-4xl bg-green-500 px-4 py-1 text-[12px] font-semibold text-white  sm:text-sm md:text-base cursor-pointer ">
+            Update
+          </button>
+        </Link>
 
         <button
           title="Delete"
