@@ -24,7 +24,6 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    // await client.connect();
     console.log("MongoDB Connected");
 
     const expenseCollection = client
@@ -41,6 +40,8 @@ async function run() {
         res.status(500).send({ message: "Failed to fetch expenses" });
       }
     });
+
+    // Get My expenses
 
     // 1. Post Add Expenses data
     app.post("/expenses", async (req, res) => {
@@ -73,3 +74,5 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on PORT: ${port}`);
 });
+
+// Deployment Link: http://localhost:7000, https://backend-pi-lime-94.vercel.app (Server)

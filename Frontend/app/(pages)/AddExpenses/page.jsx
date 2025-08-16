@@ -20,7 +20,7 @@ function AddExpenses() {
       amount,
       category,
       date,
-      userEmail: user?.email, // Include the user's email
+      userEmail: user?.email,
     };
 
     try {
@@ -35,11 +35,11 @@ function AddExpenses() {
       );
 
       if (data.insertedId) {
-        toast.success("Sports equipment added successfully");
+        toast.success("Expenses added successfully");
       }
     } catch (error) {
-      console.error("Error adding equipment:", error);
-      toast.error("Failed to add sports equipment");
+      console.error("Error adding expenses:", error);
+      toast.error("Failed to add expenses");
     }
   };
   return (
@@ -54,7 +54,7 @@ function AddExpenses() {
             <input
               type="text"
               name="title"
-              placeholder="Enter equipment title"
+              placeholder="Enter expenses title"
               className="input input-bordered w-full rounded-md p-2"
               required
             />
@@ -82,8 +82,8 @@ function AddExpenses() {
               required
             >
               <option value="">Select category</option>
-              <option value="Ball">Cricket</option>
-              <option value="Racket">Football</option>
+              <option value="Cricket">Cricket</option>
+              <option value="Football">Football</option>
               <option value="Shoes">Shoes</option>
               <option value="Accessories">Accessories</option>
             </select>
