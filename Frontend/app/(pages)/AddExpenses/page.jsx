@@ -25,7 +25,7 @@ function AddExpenses() {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:7000/expenses",
+        "https://backend-pi-lime-94.vercel.app/expenses",
         allData,
         {
           headers: {

@@ -18,7 +18,7 @@
 //   useEffect(() => {
 //     if (id) {
 //       axios
-//         .get(`http://localhost:7000/expenses/${id}`)
+//         .get(`https://backend-pi-lime-94.vercel.app/expenses/${id}`)
 //         .then((res) => {
 //           setExpenseData(res.data);
 //           setLoading(false);
@@ -34,7 +34,7 @@
 //     e.preventDefault();
 //     try {
 //       const res = await axios.put(
-//         `http://localhost:7000/expenses/${id}`,
+//         `https://backend-pi-lime-94.vercel.app/expenses/${id}`,
 //         expenseData
 //       );
 
@@ -183,7 +183,7 @@ function UpdateExpenses() {
   useEffect(() => {
     if (id) {
       axios
-        .get(`http://localhost:7000/expenses/${id}`)
+        .get(`https://backend-pi-lime-94.vercel.app/expenses/${id}`)
         .then((res) => setExpenseData(res.data))
         .catch((err) => console.error("Error fetching expense:", err));
     }
@@ -194,7 +194,7 @@ function UpdateExpenses() {
     e.preventDefault();
     try {
       const res = await axios.put(
-        `http://localhost:7000/expenses/${id}`,
+        `https://backend-pi-lime-94.vercel.app/expenses/${id}`,
         expenseData
       );
 

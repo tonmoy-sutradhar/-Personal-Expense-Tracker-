@@ -9,7 +9,7 @@
 //   useEffect(() => {
 //     const fetchData = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:7000/expenses");
+//         const response = await axios.get("https://backend-pi-lime-94.vercel.app/expenses");
 //         setExpenses(response.data);
 //       } catch (err) {
 //         console.log(err, "all data fetch issue");
@@ -78,7 +78,9 @@ function AllExpenses() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:7000/expenses");
+        const response = await axios.get(
+          "https://backend-pi-lime-94.vercel.app/expenses"
+        );
         setExpenses(response.data);
         // console.log(response.data);
       } catch (err) {

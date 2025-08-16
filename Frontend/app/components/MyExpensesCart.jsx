@@ -21,7 +21,7 @@ function MyExpensesCart({ item, handleDelete1 }) {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:7000/expenses/${id}`)
+          .delete(`https://backend-pi-lime-94.vercel.app/expenses/${id}`)
           .then((res) => {
             if (res.data.deletedCount > 0) {
               Swal.fire({

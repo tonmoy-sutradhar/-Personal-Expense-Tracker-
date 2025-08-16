@@ -142,4 +142,4 @@ app.listen(port, () => {
   console.log(`Server is running on PORT: ${port}`);
 });
 
-// Deployment Link: http://localhost:7000, https://backend-pi-lime-94.vercel.app (Server)
+// Deployment Link: https://backend-pi-lime-94.vercel.app, https://backend-pi-lime-94.vercel.app (Server)

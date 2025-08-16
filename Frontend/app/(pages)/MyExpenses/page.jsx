@@ -11,7 +11,7 @@ function MyExpenses() {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:7000/my-expenses`, {
+        .get(`https://backend-pi-lime-94.vercel.app/my-expenses`, {
           params: { email: user?.email },
         })
         .then((res) => {
