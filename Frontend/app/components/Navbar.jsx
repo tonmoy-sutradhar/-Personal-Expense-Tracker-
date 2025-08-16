@@ -38,7 +38,7 @@ function Navbar() {
                 <Link href={"/MyExpenses"}>My Expenses</Link>
               </>
             )}
-            <Link href={"/#"}>About Us</Link>
+            <Link href={"/About"}>About Us</Link>
           </ul>
         </div>
 
@@ -64,7 +64,7 @@ function Navbar() {
               <Link href={"/MyExpenses"}>My Expenses</Link>
             </>
           )}
-          <Link href={"/#"}>About Us</Link>
+          <Link href={"/About"}>About Us</Link>
         </ul>
       </div>
       <div className="navbar-end">

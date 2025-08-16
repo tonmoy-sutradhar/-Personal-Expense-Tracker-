@@ -214,7 +214,7 @@ function UpdateExpenses() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 text-black">
       <div className="max-w-xl w-full bg-white shadow-lg rounded-lg p-6">
         <h1 className="text-2xl font-bold text-center mb-6 text-purple-700">
           Update Expense
